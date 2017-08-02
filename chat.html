@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天窗口</title>
+    <link rel="stylesheet" href="src/style/bootstrap.min.css">
+    <link rel="stylesheet" href="src/style/chat.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div id="outer" class="col-md-offset-2 col-md-8">
+                <div class="panel panel-default"><!--在外层加class panel&panel-default可以实现bootstrap表格圆角 -->
+                    <!--直接在table加border-radius会有个有线条而且透明的角-->
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>正在对话： {{talkingTo}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">{{nowTime}}</td>
+                        </tr>
+                        <tr>
+                            <td id="chatBody"><!--聊天框体-->
+                                <left-msg></left-msg>
+                                <ul>
+                                    <right-msg></right-msg>
+                                </ul>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="col-md-offset-1 col-md-10">
+                                    <textarea v-model="input" id="input" cols="40" rows="5"  class="form-control" placeholder="Please enter here"></textarea>
+                                    <button @click="send" type="button" class="btn btn-success btn-sm pull-right">Send</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <template id="leftMsg">
+        <div id="imgLeft">
+            <img  src="img/boss.jpg" alt="头像">
+            <span >{{leftTalking}}</span>
+        </div>
+    </template>
+
+    <template id="rightMsg">
+        <div class="pull-right">
+            <li v-for="todo in rightTalking" style="list-style-type: none;padding-top:4px;">
+                <div class="" id="imgRight">
+                    <span>{{todo.text}}</span>
+                    <img src="img/me.jpg" alt="头像">
+                </div>
+            </li>
+        </div>
+    </template>
+
+
+    <script src="src/js/jquery-3.1.1.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <script src="src/js/vue.js"></script>
+    <script>
+        Vue.component('right-msg',{
+            template: '#rightMsg',
+            data: function() {
+                return {
+                    'rightTalking': [
+                        {text: "aaa"},
+                        {text: "bbb"},
+                        {text: "ccc"}
+                    ]
+                }
+            },
+           // props: ["rightTalking"] 暂时有问题，明天补充
+        });
+        Vue.component('left-msg',{
+            template: '#leftMsg',
+            data: function() {
+                return {
+                    'leftTalking': "我要在boss招聘"
+                }
+            }
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                nowTime: new Date(),
+                talkingTo: 'PuGu.Tec'
+            },
+            methods: {
+                send: function() {
+                   //待补充
+                }
+            }
+        });
+    </script>
+</body>
+</html>

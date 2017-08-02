@@ -1,0 +1,34 @@
+table{
+    background-color: #F4F4F4;
+    color: #B8B8B8;
+}
+#outer{
+    padding-top: 20px;
+}
+#chatBody{
+    height: 300px;
+}
+#input{
+    margin-bottom: 7px;
+    resize: none;
+}
+#imgLeft img{
+    width: 38px;
+    height: 38px;
+    border-radius: 40px;
+}
+#imgLeft span{
+    background-color: white;
+    padding: 8px;
+    border-radius: 4px 4px 4px 0;
+}
+#imgRight span{
+    background-color: #FCF0D1;
+    padding: 8px;
+    border-radius: 4px 4px 0 4px;
+}
+#imgRight img{
+    width: 38px;
+    height: 38px;
+    border-radius: 40px;
+}
