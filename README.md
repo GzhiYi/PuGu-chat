@@ -1,4 +1,7 @@
 # PuGu-chat
+
+## 基本实现图
+![还是有些小问题的](https://github.com/GzhiYi/PuGu-chat/blob/master/img/%E5%AE%8C%E6%88%90%E5%9B%BE.png)
 ## 初版图，未制作完毕
 ![还有时间什么的没有修改，待添加](https://github.com/GzhiYi/PuGu-chat/blob/master/img/%E5%9F%BA%E6%9C%AC%E6%A0%B7%E5%BC%8F.png)
 
