@@ -1,12 +1,19 @@
 table{
     background-color: #F4F4F4;
     color: #B8B8B8;
+    /*table-layout: fixed;*/
 }
 #outer{
     padding-top: 20px;
 }
 #chatBody{
     height: 300px;
+    overflow-y: scroll;
+    /*word-wrap: break-word;
+    text-overflow:ellipsis;*/
+}
+#wrapper{
+    height: 0;
 }
 #input{
     margin-bottom: 7px;
@@ -16,6 +23,7 @@ table{
     width: 38px;
     height: 38px;
     border-radius: 40px;
+    margin: 4px;
 }
 #imgLeft span{
     background-color: white;
@@ -31,4 +39,8 @@ table{
     width: 38px;
     height: 38px;
     border-radius: 40px;
+    margin: 4px;
+}
+#imgRight{
+    margin-top: 4px;
 }

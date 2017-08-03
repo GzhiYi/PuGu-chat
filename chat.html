@@ -22,17 +22,17 @@
                         <tr>
                             <td id="chatBody"><!--聊天框体-->
                                 <left-msg></left-msg>
-                                <ul>
+                                <div class="pull-right" id="wrapper">
                                     <right-msg></right-msg>
-                                </ul>
+                                </div>
                             </td>
 
                         </tr>
                         <tr>
                             <td>
                                 <div class="col-md-offset-1 col-md-10">
-                                    <textarea v-model="input" id="input" cols="40" rows="5"  class="form-control" placeholder="Please enter here"></textarea>
-                                    <button @click="send" type="button" class="btn btn-success btn-sm pull-right">Send</button>
+                                    <textarea @keyup.enter="send" v-model="msg" id="input" cols="40" rows="5"  class="form-control" placeholder="Please enter here"></textarea>
+                                    <button @click="send" class="btn btn-success btn-sm pull-right">Send</button>
                                 </div>
                             </td>
                         </tr>
@@ -51,14 +51,17 @@
     </template>
 
     <template id="rightMsg">
-        <div class="pull-right">
-            <li v-for="todo in rightTalking" style="list-style-type: none;padding-top:4px;">
-                <div class="" id="imgRight">
-                    <span>{{todo.text}}</span>
-                    <img src="img/me.jpg" alt="头像">
+
+        <ul  style="list-style-type: none;">
+            <li v-for="item in messages">
+                <div class="pull-right">
+                    <div id="imgRight">
+                        <span>{{item}}</span>
+                        <img src="img/me.jpg" alt="头像" >
+                    </div>
                 </div>
             </li>
-        </div>
+        </ul>
     </template>
 
 
@@ -70,14 +73,14 @@
             template: '#rightMsg',
             data: function() {
                 return {
-                    'rightTalking': [
-                        {text: "aaa"},
-                        {text: "bbb"},
-                        {text: "ccc"}
-                    ]
+                    messages: ['可以可以','真的可以']
                 }
             },
-           // props: ["rightTalking"] 暂时有问题，明天补充
+            events: {
+                'parent-msg': function(msg) {
+                    this.messages.push(msg)
+                }
+            }
         });
         Vue.component('left-msg',{
             template: '#leftMsg',
@@ -91,11 +94,15 @@
             el: '#app',
             data: {
                 nowTime: new Date(),
-                talkingTo: 'PuGu.Tec'
+                talkingTo: 'PuGu.Tec',
+                msg: ''
             },
             methods: {
                 send: function() {
-                   //待补充
+                   if(this.msg.trim()){
+                       this.$broadcast('parent-msg',this.msg)
+                       this.msg = ''
+                   }
                 }
             }
         });
