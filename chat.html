@@ -10,7 +10,8 @@
     <div id="app">
         <div class="container">
             <div id="outer" class="col-md-offset-2 col-md-8">
-                <div class="panel panel-default"><!--在外层加class panel&panel-default可以实现bootstrap表格圆角 -->
+                <div class="panel panel-default">
+                    <!--在外层加class panel&panel-default可以实现bootstrap表格圆角 -->
                     <!--直接在table加border-radius会有个有线条而且透明的角-->
                     <table class="table table-bordered">
                         <tr>
@@ -26,7 +27,6 @@
                                     <right-msg></right-msg>
                                 </div>
                             </td>
-
                         </tr>
                         <tr>
                             <td>
@@ -41,7 +41,6 @@
             </div>
         </div>
 
-
     </div>
     <template id="leftMsg">
         <div id="imgLeft">
@@ -51,7 +50,6 @@
     </template>
 
     <template id="rightMsg">
-
         <ul  style="list-style-type: none;">
             <li v-for="item in messages">
                 <div class="pull-right">
@@ -78,7 +76,10 @@
             },
             events: {
                 'parent-msg': function(msg) {
-                    this.messages.push(msg)
+                    this.messages.push(msg);
+                    $(document).ready(function(){ //保持滚动条在最底部的jq实现
+                        $('#chatBody').scrollTop($('#chatBody')[0].scrollHeight);
+                    })
                 }
             }
         });
