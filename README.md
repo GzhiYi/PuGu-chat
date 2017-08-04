@@ -21,7 +21,8 @@ $(document).ready(function(){ //保持滚动条在最底部的jq实现，这段�
     $('#chatBody').scrollTop($('#chatBody')[0].scrollHeight);
 })
 ```
-
+4. 发现一个问题，懂得纠错。模板template中的id元素一旦在实例id下复用多个就会出现相同id。
+  貌似初次学ajax也有这样的问题。
 ## 初版图，未制作完毕
 ![还有时间什么的没有修改，待添加](https://github.com/GzhiYi/PuGu-chat/blob/master/img/%E5%9F%BA%E6%9C%AC%E6%A0%B7%E5%BC%8F.png)
 
